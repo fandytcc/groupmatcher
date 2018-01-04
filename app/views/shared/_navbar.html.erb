@@ -32,6 +32,9 @@
               <% end %>
               <li><%= link_to "Edit Password", edit_user_registration_path %></li>
 
+              <% if current_user.admin? %>
+                <li><%= link_to "Admin Page", users_url %></li>
+              <% end %>
               <li role="separator" class="divider"></li>
               <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
             </ul>

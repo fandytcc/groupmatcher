@@ -9,6 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%if notice != nil %>
+        <p class="alert alert-info"><%= notice %></p>
+      <%end%>
+      <%if alert != nil %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <%end%>
+      <%= yield %>
+    </div>
   </body>
 </html>

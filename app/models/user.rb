@@ -15,4 +15,5 @@ class User < ApplicationRecord
   def profile?
     profile.present? && profile.persisted?
   end
+
 end

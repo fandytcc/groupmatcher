@@ -1,0 +1,31 @@
+<div class="col-md-9">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Admins
+    </div>
+    <div class="panel-body">
+
+    <% @users.each do |user| %>
+      <% if user.admin? %>
+      <div class="row">
+        <div class="col-md-7">
+          <h4>Name: <%= user.full_name %></h4>
+          <%= button_to "Change to Admin", {action: "change_to_admin", id: user.id }, method: :put, class: "btn btn-info" %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+
+  <div class="panel-heading">
+    Students
+  </div>
+    <div class="panel-body">
+    <% @users.each do |user| %>
+      <% unless user.admin? %>
+      <h4>Name: <%= user.full_name %></h4>
+      <%= button_to "Change to Student", {action: "change_to_admin", id: user.id }, method: :put, class: "btn btn-info" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

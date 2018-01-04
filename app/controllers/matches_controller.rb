@@ -2,12 +2,12 @@ class MatchesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @matches = Match.all.order(:id)
+    @matches = Match.all
     @match = Match.new
   end
 
   def create
-    day = params[:match][:day]
+    day = params[:match][:day] unless params[:match].nil?
     match_today = Match.select { |match| match.day == day.to_date }
 
     if match_today.blank?
@@ -21,19 +21,17 @@ class MatchesController < ApplicationController
   end
 
   def generate_groups(day)
-    Group.all.where("day >= :today", today: Date.today).destroy_all
-
-    @schedule = Group.new(@names.shuffle).days
-
+    Match.all.where("day >= :today", today: Date.today ).destroy_all
+    @schedule = Group.new.days
     @schedule.each do |day, match|
-      Match.create!(day: Date.today + day, matches: match)
+      Match.create!(day: Date.today + day-1, matches: match)
     end
     # redirect_to matches_path
   end
 
   private
 
-  def matches_params
+  def match_params
     params.require(:match).permit(:day, :matches)
   end
 

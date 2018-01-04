@@ -1,9 +1,11 @@
 class Group < ApplicationRecord
   attr_reader :days
 
-  def initalize(students)
+  def initialize
     @days = {}
-    matching(students)
+    set_students
+    student_names_array
+    matching
   end
 
   def set_students
@@ -11,29 +13,26 @@ class Group < ApplicationRecord
     @students = User.select { |user| user.admin == false }
   end
 
-  def set_students_array
-    @student_names = []
+  def student_names_array
+    @names = []
     profiles = Profile.all
-    profiles.each do |profile|
-      @student_names << @students.profile.full_name if !@user.admin?
+    @students.each do |student|
+      @names << student.profile.full_name
     end
   end
 
-  def matching(students)
-    puts @students.first_name
-    n = @students.first_name.dup
-    n << "Dummy" if n.size.odd?
-    fixed_number = n.shuffle!.pop
+  def matching
+    names << "Dummy" if names.size.odd?
+    days = names.size - 1
+    fixed_number = names.pop
+    groups_per_day = names.size /2
 
-    n.length.times do |i|
-      puts "round #{i+1}"
-      two_rows = [[fixed_number]+n[0..n.size/2-1], n[n.size/2..-1].reverse]
-      pairs = two_rows.transpose
-      pairs.each{ |pair| puts pair }
-      n.rotate!
-    end
-    pairs.each do |group|
-      Group.create!(groups: group)
+    days.times do |i|
+      @days[i] = []
+      groups_per_day.times do |students_index|
+        @days[i] << [names[students_index], names.reverse[students_index]]
+      end
+      names = [names[0] + names[1..-1].rotate(-1)
     end
   end
 

@@ -1,0 +1,17 @@
+<h2>Here are the matching result of students!</h2>
+
+<div class="panel-body">
+  <%= render 'form' %>
+</div>
+
+<table class="table table-striped table-bordered">
+  <% @matches.sort.each do |day| %>
+	<tr>
+		<% day.groups.each do |group| %>
+		<td><%= group.join(" & ") %></td>
+			<% end %>
+	</tr>
+	<% end %>
+</table>
+
+<%= button_to "Create Groups", generate_groups_path %>

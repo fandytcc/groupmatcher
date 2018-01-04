@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104125651) do
+ActiveRecord::Schema.define(version: 20180104154149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
-    t.date "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "groups", default: [], array: true
@@ -26,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180104125651) do
     t.boolean "generated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "day"
+    t.string "matches", default: [], array: true
   end
 
   create_table "profiles", force: :cascade do |t|

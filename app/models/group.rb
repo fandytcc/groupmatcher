@@ -2,7 +2,7 @@ class Group < ApplicationRecord
   attr_reader :days
 
   def initialize
-    @days = {}
+    @rounds = {}
     @names = []
     set_students
     student_names_array
@@ -10,7 +10,7 @@ class Group < ApplicationRecord
   end
 
   def set_students
-    @users = User.all
+    @users = User.all.shuffle
     @students = User.select { |user| user.admin == false }
   end
 
@@ -29,9 +29,9 @@ private
     groups_per_day = @names.size/2
 
     days.times do |i|
-      @days[i+1] = []
+      @days[i] = []
       groups_per_day.times do |students_index|
-        @days[i+1] << [@names[students_index], @names.reverse[students_index]]
+        @days[i] << [@names[students_index], @names.reverse[students_index]]
       end
       @names = [@names[0]] + @names[1..-1].rotate(-1)
     end

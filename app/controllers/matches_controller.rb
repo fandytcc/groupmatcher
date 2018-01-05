@@ -23,9 +23,8 @@ class MatchesController < ApplicationController
   def generate_groups(day)
     schedule = Group.new.days
     schedule.each do |day, match|
-      Match.create!(day: Date.today + day-1, matches: match)
+      Match.create!(day: Date.today + day, matches: match)
     end
-    # redirect_to matches_path
   end
 
   private

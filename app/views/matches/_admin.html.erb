@@ -1,12 +1,21 @@
 <h2>Here are the matching result of students!</h2>
   <div class="panel-body">
-    <%= render 'form' %>
+    <%= form_for [@match] do |f| %>
+      <div class="form-group">
+        <label>Date:</label>
+        <%= f.date_field :day, prompt: "Select a date", class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create groups", class: "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
 
-  <h2><%= @match.day %></h2>
   <table class="table table-striped table-bordered">
     <% @matches.each do |match| %>
     <tr>
+      <td><%= match.day %></td>
       <td><%= match.id %></td>
       <% match.matches.each do |group| %>
        <td><%= group.join(" & ") %></td>

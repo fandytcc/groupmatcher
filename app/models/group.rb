@@ -24,7 +24,7 @@ class Group < ApplicationRecord
 private
   def matching
     @names << "Dummy" if @names.size.odd?
-    days = @names.size - 1
+    days = 1
     # fixed_number = @names.pop
     groups_per_day = @names.size/2
 

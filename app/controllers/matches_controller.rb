@@ -21,7 +21,6 @@ class MatchesController < ApplicationController
   end
 
   def generate_groups(day)
-    Match.all.where("day >= :today", today: Date.today ).destroy_all
     @schedule = Group.new.days
     @schedule.each do |day, match|
       Match.create!(day: Date.today + day-1, matches: match)

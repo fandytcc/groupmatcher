@@ -1,1 +1,12 @@
-<h1>Pages#home</h1>
+<h1>Group Matcher</h1>
+
+<div class="row">
+  <div class="col-md-2 col-md-4">
+    <% if current_user.profile? %>
+      <p><%= link_to "Start Matching", matches_url, class: "btn btn-info" %></p>
+    <% else %>
+      <h2> You must create a profile first before matching starts! </h2>
+      <p><%= link_to "Create Profile", new_profile_path, class: "btn btn-warning" %></p>
+    <% end %>
+  </div>
+</div>

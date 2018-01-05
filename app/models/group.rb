@@ -28,7 +28,7 @@ private
     # fixed_number = @names.pop
     groups_per_day = @names.size/2
 
-    @names.size.times do |i|
+    days.times do |i|
       @days[i+1] = []
       groups_per_day.times do |students_index|
         @days[i+1] << [@names[students_index], @names.reverse[students_index]]

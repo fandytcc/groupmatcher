@@ -3,7 +3,6 @@
 A rails app to help Codaisseur's students and teachers to make new teams of 2 students every day.
 
 <img width="500" alt="screen shot 2018-02-14 at 16 28 21" src="https://user-images.githubusercontent.com/32798242/36212416-313b98ec-11a4-11e8-88ae-b333e621357a.png">
-<img width="500" alt="screen shot 2018-02-14 at 16 27 46" src="https://user-images.githubusercontent.com/32798242/36212417-32e7650e-11a4-11e8-9830-9562a5df1429.png">
 
 ## Matching Algorithm
 Pairs/couples   are   not   matched   with   the   same   person   twice   until   he/she   has   been   matched   with all   the   registered   Students   until   that   moment.

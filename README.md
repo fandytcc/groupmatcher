@@ -1,24 +1,49 @@
-# README
+# Find Your Match!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails app to help Codaisseur's students and teachers to make new teams of 2 students every day.
 
-Things you may want to cover:
+<img width="500" alt="screen shot 2018-02-14 at 16 28 21" src="https://user-images.githubusercontent.com/32798242/36212416-313b98ec-11a4-11e8-88ae-b333e621357a.png">
+<img width="500" alt="screen shot 2018-02-14 at 16 27 46" src="https://user-images.githubusercontent.com/32798242/36212417-32e7650e-11a4-11e8-9830-9562a5df1429.png">
 
-* Ruby version
+## Matching Algorithm
+Pairs/couples   are   not   matched   with   the   same   person   twice   until   he/she   has   been   matched   with all   the   registered   Students   until   that   moment.
 
-* System dependencies
+## Steps
+These are the steps our team followed when working on this app:
+1. Set up project & research on Robin-tournament algorithm
+2. Draw wireframes, sketch out how users navigate
+3. Plan data models, database structure by understanding the impacts of user interaction
+4. Generate the App & Models
+5. Create initial seed data
+6. Create controllers & views for matches overview & profile page
+7. Styling with [Bootstrap](https://getbootstrap.com/)
+8. Work on the matching algorithm (which can still be further improved)
 
-* Configuration
+## Model/ Database Structure
+| Group      | Type   | Description    |
+|------------|--------|----------------|
+| groups     | string | Groups of pairs|
 
-* Database creation
+| Match      | Type   | Description    |
+|------------|--------|----------------|
+| matches    | string | Matches        |
+| day        | date   | Matching date  |
 
-* Database initialization
+| Profile   | Type   | Description   |
+|-----------|--------|---------------|
+| first_name| string | First name    |
+| last_name | string | Last name     |
+| user_id   | bigint | references    |
 
-* How to run the test suite
+User model was created by using [Devise](https://github.com/RailsApps/rails-devise).
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running Locally
+Make sure you have [Ruby](https://www.ruby-lang.org/en/) and [Bundler](http://bundler.io/) installed.
 
-* Deployment instructions
-
-* ...
+```bash
+git clone git@github.com:fandytcc/groupmatcher.git
+cd groupmatcher
+bundle install
+rails db:create db:migrate db:seed
+rails server
+```
